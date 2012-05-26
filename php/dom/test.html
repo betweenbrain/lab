@@ -6,8 +6,30 @@
 <body>
 <ul>
 	<li>
-		<a href="test" title="test">foo</a>
+		<a href="test" title="test foo" class="bar level-1">foo</a>
 		bar
+	</li>
+	<li>
+		<a href="test" title="test" class="bar level-1">foo</a>
+		bar
+	</li>
+	<li>
+		<a href="test" title="test" class="bar level-1">foo</a>
+		bar
+		<ul>
+			<li>
+				<a href="test" title="test" class="bar level-2">foo</a>
+				bar
+			</li>
+			<li>
+				<a href="test" title="test" class="bar" class="bar level-2">foo</a>
+				bar
+			</li>
+			<li>
+				<a href="test" title="test foo bar" class="bar level-2">test foo bar</a>
+				bar
+			</li>
+		</ul>
 	</li>
 </ul>
 </body>
