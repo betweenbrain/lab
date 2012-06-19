@@ -75,11 +75,11 @@ if (isset($_POST['text']) && $_POST['text'] != '') {
 <html>
 <head>
 	<title><?php
-			if ($state) {
-				echo $state;
-			} else {
-				echo $appname;
-			} ?></title>
+	if ($state) {
+		echo $state;
+	} else {
+		echo $appname;
+	} ?></title>
 </head>
 <body>
 	<?php if ($debug) : ?>

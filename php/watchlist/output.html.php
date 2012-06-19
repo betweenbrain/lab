@@ -12,11 +12,11 @@
 <html>
 <head>
 	<title><?php
-		if ($state) {
-			echo $state;
-		} else {
-			echo $appname;
-		} ?></title>
+	if ($state) {
+		echo $state;
+	} else {
+		echo $appname;
+	} ?></title>
 </head>
 <body>
 <p>
