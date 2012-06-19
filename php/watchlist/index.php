@@ -1,11 +1,11 @@
 <?php
 
-	/**
-	 * File         index.php
-	 * Created      6/18/12 9:43 PM
-	 * Author       Matt Thomas matt@betweenbrain.com
-	 * Copyright    Copyright (C) 2012 betweenbrain llc.
-	 */
+/**
+ * File         index.php
+ * Created      6/18/12 9:43 PM
+ * Author       Matt Thomas matt@betweenbrain.com
+ * Copyright    Copyright (C) 2012 betweenbrain llc.
+ */
 
 	// Define global check to prevent direct access to files
 	define('_WL', 1);
