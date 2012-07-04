@@ -11,6 +11,6 @@
 	$dbname  = 'watchlist';
 	$dbuser  = 'root';
 	$dbpass  = '';
-	$debug   = TRUE;
+	$debug   = NULL;
 	$dbtable = 'test';
 	$state   = NULL;
