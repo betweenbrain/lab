@@ -6,13 +6,17 @@
 	<script>
 		(function ($) { // no conflict
 			$().ready(function () {
-				var nav = $("#nav"), offset = nav.offset();
-				nav.prepend( "top: " + offset.top);
+				// inspired by http://demosthenes.info/blog/130/Scroll-To-Top-Then-Fixed-Effect-With-JQuery
+				var nav = $("#nav"), pos = nav.offset();
 				$(window).scroll(function () {
-					$("#nav").css("position","fixed").css("top", Math.max(0, 192 - $(this).scrollTop()));
-				});
+					if ($(this).scrollTop() > (pos.top)) {
+						nav.css('position', 'fixed').css('top', '0');
+					} else if ($(this).scrollTop() <= pos.top) {
+						nav.removeAttr("style");
+					}
+				})
 			});
-		})(jQuery) // no conflict
+		})(jQuery); // no conflict
 	</script>
 	<style>
 		body {
@@ -127,7 +131,7 @@
 			<a href="#two">Two</a>
 		</li>
 		<li>
-			<a href="#threee">Three</a>
+			<a href="#three">Three</a>
 		</li>
 		<li>
 			<a href="#four">Four</a>
