@@ -4,19 +4,19 @@
 	<title></title>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script>
-		(function ($) { // no conflict
-			$().ready(function () {
-				// inspired by http://demosthenes.info/blog/130/Scroll-To-Top-Then-Fixed-Effect-With-JQuery
-				var nav = $("#nav"), pos = nav.offset();
-				$(window).scroll(function () {
-					if ($(this).scrollTop() > (pos.top)) {
-						nav.css('position', 'fixed').css('top', '0');
-					} else if ($(this).scrollTop() <= pos.top) {
-						nav.removeAttr("style");
-					}
-				})
-			});
-		})(jQuery); // no conflict
+	(function ($) { // no conflict
+		$().ready(function () {
+			// Inspired by http://demosthenes.info/blog/130/Scroll-To-Top-Then-Fixed-Effect-With-JQuery
+			var nav = $("#nav"), pos = nav.offset();
+			$(window).scroll(function () {
+				if ($(this).scrollTop() > (pos.top)) {
+					nav.css('position', 'fixed').css('top', '0');
+				} else if ($(this).scrollTop() <= pos.top) {
+					nav.removeAttr("style");
+				}
+			})
+		});
+	})(jQuery); // no conflict
 	</script>
 	<style>
 		body {
