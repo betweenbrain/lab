@@ -18,7 +18,7 @@ function addToAlbum(data) {
 		imageSrc = data.find('img:eq(0)').attr('src'),
 		fileName = imageSrc.substr(imageSrc.lastIndexOf("/") + 1),
 		itemNumber = fileName.split('_')[0],
-		item = $.cookie('image_licensing');
+		item = [$.cookie('image_licensing')];
 	/*
 	 item = {};
 	 item[itemNumber] = {};
@@ -26,22 +26,29 @@ function addToAlbum(data) {
 	 item[itemNumber]["src"] = imageSrc;
 	 */
 
-	if (typeof item === 'undefined') {
-		var item = {};
+	if (!item.length) {
+		var item = new Array;
 		alert('undefined');
-	} else {
-		$.removeCookie('image_licensing');
-		alert('deleted');
+		alert(item.length);
 	}
 
-	item[itemNumber] = {
+	alert(item.length);
+
+	var tmp = {};
+	tmp = {
 		"title": title,
 		"src"  : imageSrc
 	};
 
+
+
+	item.push(itemNumber, JSON.stringify(tmp));
+
+	//item.push("itemNumber", itemNumber,	"title", title,	"src"  , imageSrc);
+
 	//$.cookie('image_licensing', JSON.stringify(item), {expires: 7, path: '/' });
 
-	$.cookie('image_licensing', JSON.stringify(item));
+	$.cookie('image_licensing', item);
 
 	var crumbs = $.cookie('image_licensing');
 
