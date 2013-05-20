@@ -38,8 +38,6 @@ if ($_SESSION['time']) {
 } else {
 	echo '<p>No session array!</p>';
 }
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -48,17 +46,20 @@ if ($_SESSION['time']) {
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script>
 		(function ($) {
-			// TODO: should start using .on instead of .live
-			$('.submit').live('click', function () {
+			/*
+			 * Alternate use of on
+			 * $(document).on("click",".submit", function () {
+			 */
+			$(document).on("submit", function () {
 				$.ajax({
+					url    : 'submit.php',
 					type   : 'POST',
-					data   : "time=" + <?php echo time() ?>,
-					success: function (data) {
-						$(".status").append(data);
+					data   : "time=" + Date() + '&option=bob',
+					success: function (response) {
+						$(".status").append(response);
 					}
 				});
 				return false;
-
 			});
 		})(jQuery)
 
@@ -67,7 +68,7 @@ if ($_SESSION['time']) {
 <body>
 <h4>Tizag Art Supply Order Form</h4>
 
-<form action="submit.php" method="post">
+<form action="submit.php" method="post" id="timeForm">
 	Time: <input name="time" type="text" value="<?php echo time() ?>" />
 	<input type="submit" class="submit" />
 </form>
