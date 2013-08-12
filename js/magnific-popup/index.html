@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!-- Magnific Popup core CSS file -->
+	<link rel="stylesheet" href="magnific-popup.css">
+
+	<!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	<!-- Magnific Popup core JS file -->
+	<script src="jquery.magnific-popup.js"></script>
+
+	<script>
+		(function ($) {
+			$().ready(function () {
+				$('.popup').magnificPopup({
+					type   : 'image',
+					gallery: {
+						enabled: true
+					},
+					image  : {
+						markup: '<div class="mfp-figure">' +
+								'<div class="mfp-title"></div>' +
+								'<div class="mfp-close"></div>' +
+								'<div class="mfp-img"></div>' +
+								'<div class="mfp-bottom-bar">' +
+								'<div class="mfp-counter"></div>' +
+								'<div class="thumbs"></div>' +
+								'</div>' +
+								'</div>'
+					},
+
+					callbacks: {
+
+						markupParse      : function (template, values, item) {
+							template.find('.thumbs').html('');
+							var $thumbs = item.el.data("thumbs").split(','),
+									$length = $thumbs.length;
+							for (var i = 0; i < $length; ++i) {
+								template.find('.thumbs').append('<img src="http://betweenbrain.com/images/buddha/' + $thumbs[i] + '" width="50"/>');
+							}
+
+						},
+						imageLoadComplete: function () {
+							$('.thumbs img').click(function () {
+								$('.thumbs img').removeClass('active');
+								$(this).addClass('active');
+								var $src = $(this).attr('src');
+								$('.mfp-img').attr('src', $src);
+							});
+						}
+					}
+				});
+			});
+		}(jQuery));
+	</script>
+<style type="text/css">
+	.active{
+		border: 4px solid red;
+	}
+</style>
+</head>
+<body>
+<ul id="container">
+	<li class="item meat animal">
+		<a class="popup" title="Buddha1" data-thumbs="buddha2.jpg,buddha3.jpg,buddha4.jpg" href="http://betweenbrain.com/images/buddha/buddha1.jpg">Open popup</a>
+	</li>
+	<li class="item">
+		<a class="popup" title="Buddha2" data-thumbs="buddha3.jpg,buddha4.jpg,buddha1.jpg" href="http://betweenbrain.com/images/buddha/buddha2.jpg">Open popup</a>
+	</li>
+	<li class="item">
+		<a class="popup" title="Buddha3" data-thumbs="buddha4.jpg,buddha1.jpg,buddha2.jpg" href="http://betweenbrain.com/images/buddha/buddha3.jpg">Open popup</a>
+	</li>
+	<li class="item">
+		<a class="popup" title="Buddha4" data-thumbs="buddha1.jpg,buddha2.jpg,buddha3.jpg" href="http://betweenbrain.com/images/buddha/buddha4.jpg">Open popup</a>
+	</li>
+</ul>
+</body>
+</html>
