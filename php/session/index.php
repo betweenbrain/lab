@@ -20,11 +20,11 @@ if (!isset($_SESSION['time'])) {
 	$_SESSION['time'] = array();
 }
 /*
- * Populate $_SESSION['time'] only with new $_POST['time'] data
+ * Populate $_SESSION['time'] only with new $_GET['time'] data
  * Using isset check to avoid throwing an error if the array exists but empty
  */
-if (isset($_POST['time']) && !in_array($_POST['time'], $_SESSION['time'])) {
-	$_SESSION['time'][] = $_POST['time'];
+if (isset($_GET['time']) && !in_array($_GET['time'], $_SESSION['time'])) {
+	$_SESSION['time'][] = $_GET['time'];
 }
 
 /*
@@ -44,17 +44,25 @@ if ($_SESSION['time']) {
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script>
 		(function ($) {
-			$().ready(function () {
+			// TODO: should start using .on instead of .live
+			$('.submit').live('click', function (e) {
 				$.ajax({
-					type   : "POST",
-					data   : "time=" + <?php echo time() ?>,
-					success: function () {
-						$(".status").append('<p>Yep</p>');
+					data   : {time: "<?php echo time() ?>"},
+					success: function (data) {
+						$(".status").empty();
+						$(".status").append(data);
 					},
 					error  : function () {
 						$(".status").append('<p>Nope</p>');
 					}
 				});
+				e.preventDefault();
+
+				/*
+				 $.get("index.php",{time: "
+				<?php echo time() ?>"});
+				 */
+
 			});
 		})(jQuery)
 
@@ -62,6 +70,7 @@ if ($_SESSION['time']) {
 </head>
 <body>
 <a href="display.php">Display Session Variable</a>
+<input type="button" class="submit" value="Submit" />
 <p class="status"></p>
 </body>
 </html>

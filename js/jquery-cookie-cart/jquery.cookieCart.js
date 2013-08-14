@@ -18,40 +18,24 @@ function addToAlbum(data) {
 		imageSrc = data.find('img:eq(0)').attr('src'),
 		fileName = imageSrc.substr(imageSrc.lastIndexOf("/") + 1),
 		itemNumber = fileName.split('_')[0],
-		item = [$.cookie('image_licensing')];
-	/*
-	 item = {};
-	 item[itemNumber] = {};
-	 item[itemNumber]["title"] = title;
-	 item[itemNumber]["src"] = imageSrc;
-	 */
+		tmp = itemNumber + ',' + title + ',' + imageSrc;
 
-	if (!item.length) {
-		var item = new Array;
-		alert('undefined');
-		alert(item.length);
+	if ($.cookie('image_licensing')) {
+		var crumbs = $.cookie('image_licensing');
+		var items = crumbs + ':' + tmp;
+		alert($.cookie('image_licensing'));
+	} else {
+		var items = tmp;
 	}
 
-	alert(item.length);
+	$('.cart').append('<p>' + tmp + '</p>');
 
-	var tmp = {};
-	tmp = {
-		"title": title,
-		"src"  : imageSrc
-	};
+	$.cookie('image_licensing', items);
 
-
-
-	item.push(itemNumber, JSON.stringify(tmp));
-
-	//item.push("itemNumber", itemNumber,	"title", title,	"src"  , imageSrc);
-
-	//$.cookie('image_licensing', JSON.stringify(item), {expires: 7, path: '/' });
-
-	$.cookie('image_licensing', item);
-
-	var crumbs = $.cookie('image_licensing');
-
-	alert(crumbs);
-
+	var arr = items.split(":");
+	$.each(arr, function (index, item) {
+		var ar = item.split(","),
+			work = '<li>Item#: ' + ar[0] + ' Title: ' + ar[1] + ' Image: ' + ar[2] + '</li>';
+		//$('.cart').append(work);
+	});
 }

@@ -21,7 +21,7 @@ require_once(__ROOT__ . '/connection.php');
 
 // Some magic security hokum
 if (get_magic_quotes_gpc()) {
-	$process = array(&$_GET, &$_POST, &$_COOKIE, &$_REQUEST);
+	$process = array(&$_GET, &$_GET, &$_COOKIE, &$_REQUEST);
 	while (list($key, $val) = each($process)) {
 		foreach ($val as $k => $v) {
 			unset($process[$key][$k]);
