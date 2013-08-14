@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!-- Magnific Popup core CSS file -->
+	<link rel="stylesheet" href="../magnific-popup.css">
+
+	<!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+	<!-- Magnific Popup core JS file -->
+	<script src="../jquery.magnific-popup.js"></script>
+
+	<script>
+		(function ($) {
+			$().ready(function () {
+				$('.popup').magnificPopup({
+					type     : 'inline',
+					midClick : true,
+					gallery  : {
+						enabled: true
+					},
+					callbacks: {
+						/*
+
+						 beforeOpen  : function () {
+						 console.log('beforeOpen');
+						 },
+						 elementParse: function (item) {
+						 console.log('elementParse', item);
+						 // feel free to modify here item object
+						 },
+						 change      : function () {
+						 console.log('change');
+						 //console.log(this.content); // Direct reference to your popup element
+						 },
+						 resize      : function () {
+						 console.log('resize');
+						 // resize event triggers only when height is changed or layout forced
+						 },
+						 open        : function () {
+						 console.log('open');
+						 },
+
+						 beforeClose: function () {
+						 // Callback available since v0.9.0
+						 console.log('beforeClose');
+						 },
+						 close      : function () {
+						 console.log('close');
+						 },
+						 afterClose : function () {
+						 console.log('afterClose');
+						 },
+
+						 markupParse : function (template, values, item) {
+						 // Triggers each time when content of popup changes
+						 console.log('markupParse');
+						 },
+						 updateStatus: function (data) {
+						 console.log('updateStatus');
+						 // "data" is an object that has two properties:
+						 // "data.status" - current status type, can be "loading", "error", "ready"
+						 // "data.text" - text that will be displayed (e.g. "Loading...")
+						 // you may modify this properties to change current status or its text dynamically
+						 },
+						 elementParse: function (item) {
+						 console.log('elementParse');
+						 // triggers only once for each item
+						 // here you may modify URL, type, or any other data
+						 },
+
+						 imageLoadComplete: function () {
+						 // fires when image in current popup finished loading
+						 // avaiable since v0.9.0
+						 console.log('imageLoadComplete');
+						 },
+
+
+						 // Only for ajax popup type
+						 parseAjax        : function (mfpResponse) {
+						 // mfpResponse.data is a "data" object from ajax "success" callback
+						 // for simple HTML file, it will be just String
+						 // You may modify it to change contents of the popup
+						 // For example, to show just #some-element:
+						 // mfpResponse.data = $(mfpResponse.data).find('#some-element');
+
+						 // mfpResponse.data must be a String or a DOM (jQuery) element
+
+						 console.log('parseAjax');
+						 },
+						 ajaxContentAdded : function () {
+						 // Ajax content is loaded and appended to DOM
+						 console.log('ajaxContentAdded');
+						 }
+						 */
+
+					}
+				});
+
+				$('.popup').on('mfpOpen', function (e) {
+					/*
+					 var mfp = $.magnificPopup.instance;
+					 $('.mfp-img').attr('src', mfp.currItem.el.data("src"));
+					 */
+
+				});
+
+
+				$('.popup').on('mfpChange', function (e) {
+
+					/*
+					 console.log('CurrItem', $.magnificPopup.instance.currItem);
+
+					 console.log('Content', $.magnificPopup.instance.content[0]);
+					 var $mfpImg = $('.mfp-img').attr('src');
+					 console.log($mfpImg);
+					 */
+
+					//$('.mfp-img').attr('src', '' + $.magnificPopup.instance.currItem.el.data("src")  + '');
+
+					//alert($.magnificPopup.instance.currItem.el.data("src"));
+
+					//console.log('Index', $.magnificPopup.instance.currItem.el.data("src"));
+
+					/*
+					 var $elem = $($.magnificPopup.instance.content[0]),
+					 $source = $elem.find('.mfp-img').attr('src');
+					 alert($source);
+					 */
+
+					/*
+					 var mfp = $.magnificPopup.instance;
+					 $('.mfp-img').attr('src', mfp.currItem.el.data("src"));
+					 console.log(mfp.currItem.el.data("src"))
+					 console.log(mfp.currItem.el.data("src"))
+					 */
+
+					/*
+					 console.log('Index', $.magnificPopup.instance.currItem.index);
+					 var $index = $.magnificPopup.instance.currItem.index,
+					 $dataSrc = $.magnificPopup.instance.items[$index].el.data("src")
+					 //console.log('Data-src: ', $.magnificPopup.instance.items[$index].el.data("src"));
+
+					 $('.mfp-img').attr('src', $dataSrc);
+					 */
+
+
+					// Good code: resets class
+					//$('.thumbs img').removeClass('active');
+
+				});
+			});
+
+			// Reset image src when using navigation
+			// TODO: Target click content
+			$(document).on('click', '.mfp-arrow', function (e) {
+				var $index = $.magnificPopup.instance.currItem.index,
+					$dataSrc = $.magnificPopup.instance.items[$index].el.data("src");
+				console.log('Data-src: ', $dataSrc)
+				$('.mfp-img').attr('src', $dataSrc);
+				$('.thumbs img').removeClass('active');
+			});
+
+			// Change mfp-img when clicking thumbnails
+			$(document).on('click', '.thumbs img', function () {
+				$('.thumbs img').removeClass('active');
+				$(this).addClass('active');
+				var $src = $(this).attr('src');
+				$('.mfp-img').attr('src', $src);
+			});
+
+
+		}(jQuery));
+	</script>
+	<style type="text/css">
+		.active {
+			border : 4px solid red;
+		}
+
+		.thumbs img {
+			width  : 50px;
+			height : 50px;
+		}
+	</style>
+</head>
+<body>
+<ul>
+	<li>
+		<a class="popup" href="#buddha1" data-src="//betweenbrain.com/images/buddha/buddha1.jpg">Open popup</a>
+
+		<div class="mfp-hide" id="buddha1">
+			<h2>Buddha1</h2>
+			<img class="mfp-img" src="//betweenbrain.com/images/buddha/buddha1.jpg" />
+
+			<div class="thumbs">
+				<img src="//betweenbrain.com/images/buddha/buddha2.jpg" />
+				<img src="//betweenbrain.com/images/buddha/buddha3.jpg" />
+				<img src="//betweenbrain.com/images/buddha/buddha4.jpg" />
+			</div>
+		</div>
+	</li>
+	<li>
+		<a class="popup" href="#buddha2" data-src="//betweenbrain.com/images/buddha/buddha2.jpg">Open popup</a>
+
+		<div class="mfp-hide" id="buddha2">
+			<h2>Buddha2</h2>
+			<img class="mfp-img" src="//betweenbrain.com/images/buddha/buddha2.jpg" />
+
+			<div class="thumbs">
+				<img src="//betweenbrain.com/images/buddha/buddha3.jpg" />
+				<img src="//betweenbrain.com/images/buddha/buddha4.jpg" />
+				<img src="//betweenbrain.com/images/buddha/buddha1.jpg" />
+			</div>
+		</div>
+	</li>
+	<li>
+		<a class="popup" href="#buddha3">Open popup</a>
+
+		<div class="mfp-hide" id="buddha3">
+			<h2>Nicholas Cage Freak-Out Montage</h2>
+			<!--
+			<iframe width="420" height="315" src="//www.youtube.com/embed/S73swRzxs8Y?rel=0" frameborder="0" allowfullscreen></iframe>
+			-->
+		</div>
+	</li>
+	<li>
+		<a class="popup" href="#buddha4">Open popup</a>
+
+		<div class="mfp-hide" id="buddha4">
+			<h2>Nicholas Cage - Love Me Tender(Wild at Heart)</h2>
+			<!--
+			<iframe width="100%" height="166" scrolling="no" frameborder="no" src="//w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F26327439"></iframe>
+			-->
+		</div>
+	</li>
+</ul>
+</body>
+</html>
