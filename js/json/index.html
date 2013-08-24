@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		var json = '[["\/\/media.guggenheim.org\/licensing\/architecture\/bilbao\/bilbao_image5.jpg,bilbao_image5.jpg","\/\/media.guggenheim.org\/licensing\/architecture\/bilbao\/bilbao_image4.jpg,bilbao_image4.jpg","\/\/media.guggenheim.org\/licensing\/architecture\/bilbao\/bilbao_image3.jpg,bilbao_image3.jpg","\/\/media.guggenheim.org\/licensing\/architecture\/bilbao\/bilbao_image2.jpg,bilbao_image2.jpg","\/\/media.guggenheim.org\/licensing\/architecture\/bilbao\/bilbao_image1.jpg,bilbao_image1.jpg","1"]]';
+		var myObject = JSON.parse(json, function (key, value) {
+		        if (typeof type === 'string' && typeof window[type] === 'function') {
+		            return new (window[type])(value);
+		        }
+		    return value;
+		});
+		/*
+		var result = myObject.split(',');
+		function show_array(array) {
+			for(var i=0; i<array.length; i++) {
+				document.write(array[i]);
+				document.write('<br/>');
+			}
+		}
+		show_array(result);
+		*/
+
+
+		document.write(myObject);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

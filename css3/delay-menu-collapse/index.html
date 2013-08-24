@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+        nav ul {
+        	list-style-type : none;
+        }
+
+        nav ul li {
+        	float    : left;
+        	position : relative;
+        	margin   : 0;
+        	padding  : 0;
+        }
+
+        nav ul a,
+        nav ul span.separator {
+        	display : block;
+        	padding : .1em .7em;
+        }
+
+        /* use padding to indent text */
+
+        nav ul ul {
+        	position : absolute;
+        	left     : -999em;
+        	z-index  : 999;
+        	width    : 16em;
+        	margin   : 0;
+        	padding  : 0;
+        }
+
+        /* change width to alter sub-menu widths */
+
+        nav ul ul li {
+        	width : 100%;
+        }
+
+        nav ul ul ul {
+        	margin : 0 0 0 100%;
+        	top    : 0;
+        }
+        nav ul li:hover ul ul,
+        nav ul ul li:hover ul ul,
+        nav ul ul ul li:hover ul ul {
+        	left : -999em;
+        }
+        
+        nav ul li:hover ul,
+        nav ul ul li:hover ul,
+        nav ul ul ul li:hover ul,
+        nav ul ul ul ul li:hover ul {
+        	left : auto;
+        }
+    </style>
+</head>
+<body>
+<nav>
+<ul>
+    <li><a href="#">foo</a>
+        <ul>
+            <li><a href="#">foo</a></li>
+            <li><a href="#">foo</a></li>
+            <li><a href="#">foo</a></li>
+            <li><a href="#">foo</a></li>
+            <li><a href="#">foo</a></li>
+        </ul></li>
+    <li><a href="#">foo</a>
+        <ul>
+            <li><a href="#">foo</a></li>
+            <li><a href="#">foo</a></li>
+            <li><a href="#">foo</a></li>
+            <li><a href="#">foo</a></li>
+            <li><a href="#">foo</a></li>
+        </ul></li>
+    <li><a href="#">foo</a>
+        <ul>
+            <li><a href="#">foo</a></li>
+            <li><a href="#">foo</a></li>
+            <li><a href="#">foo</a></li>
+            <li><a href="#">foo</a></li>
+            <li><a href="#">foo</a></li>
+        </ul></li>
+    <li><a href="#">foo</a>
+        <ul>
+            <li><a href="#">foo</a></li>
+            <li><a href="#">foo</a></li>
+            <li><a href="#">foo</a></li>
+            <li><a href="#">foo</a></li>
+            <li><a href="#">foo</a></li>
+        </ul></li>
+    <li><a href="#">foo</a>
+        <ul>
+            <li><a href="#">foo</a></li>
+            <li><a href="#">foo</a></li>
+            <li><a href="#">foo</a></li>
+            <li><a href="#">foo</a></li>
+            <li><a href="#">foo</a></li>
+        </ul></li>
+</ul>
+    </nav>
+</body>
+</html>

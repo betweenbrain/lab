@@ -1,0 +1,117 @@
+@charset "utf-8";
+
+/**
+ * File       
+ * Created    9/27/12 11:12 PM 
+ * Author     Matt Thomas matt@betweenbrain.com
+ * Copyright  Copyright (C) 2012 betweenbrain llc. 
+ */
+
+body {
+	margin : 0 1em;
+}
+
+body,
+section {
+	background : #999;
+}
+
+#breakpoint {
+	color      : #ff0000;
+	position   : absolute;
+	top        : 1rem;
+	left       : 1rem;
+	background : #000;
+	border     : 1px solid #ff0000;
+	padding    : 1rem;
+}
+
+#breakpoint:after {
+	content : "Breakpoint: baseline";
+}
+
+section {
+	display : block;
+}
+
+article {
+	background: #fff;
+}
+
+/* baseline 24.5em */
+
+@media only screen and (min-width: 36.75em /* 1.5 x 24.5em */) {
+
+	#breakpoint:after {
+		content : "Breakpoint: 36.75em";
+	}
+
+	section {
+		float : left;
+	}
+
+	.leading {
+		width : 61.803398875%;
+	}
+
+	.leading article {
+		margin-right : .5rem;
+	}
+
+	.secondary {
+		width : 38.196601125%;
+	}
+
+	.secondary article {
+		margin-left : .5rem;
+	}
+
+}
+
+@media only screen and (min-width: 49em /* 2 x 24.5em */) {
+
+	#breakpoint:after {
+		content : "Breakpoint: 49em";
+	}
+
+	.leading,
+	.secondary {
+		width : 50%;
+	}
+
+}
+
+@media only screen and (min-width: 61.25em /* 2.5 x 24.5em */) {
+
+	#breakpoint:after {
+		content : "Breakpoint: 61.25em";
+	}
+
+	body {
+		max-width : 62em;
+		margin    : 0 auto;
+	}
+
+	.leading {
+		width : 61.803398875%;
+	}
+
+	.secondary {
+		width : 19.098300562%;
+	}
+
+	.secondary:nth-child(odd) article {
+		background  : #ccc;
+		margin-left : .5rem;
+	}
+
+	.secondary:nth-child(even) article {
+		margin-right : .5rem;
+	}
+
+}
+
+@media only screen and (min-width: 73.25em /* 3 x 24.5em */) {
+
+
+}

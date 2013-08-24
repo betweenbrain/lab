@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!-- Magnific Popup core CSS file -->
+	<link rel="stylesheet" href="../magnific-popup.css">
+
+	<!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+	<!-- Magnific Popup core JS file -->
+	<script src="../jquery.magnific-popup.js"></script>
+
+	<script>
+		(function ($) {
+			$().ready(function () {
+				$('.popup').magnificPopup({
+					type          : 'ajax',
+					cursor: 'mfp-ajax-cur',
+					closeOnBgClick: false,
+					midClick      : true,
+					gallery       : {
+						enabled: true
+					}
+
+				});
+			});
+
+			// Reset image src when using navigation
+			$(document).on('click', '.mfp-arrow', function (e) {
+				var $index = $.magnificPopup.instance.currItem.index,
+						$dataSrc = $.magnificPopup.instance.items[$index].el.data("src");
+				console.log('Data-src: ', $dataSrc)
+				$('.mfp-img').attr('src', $dataSrc);
+				$('.thumbs img').removeClass('active');
+			});
+
+			// Change mfp-img when clicking thumbnails
+			$(document).on('click', '.thumbs img', function () {
+				$('.thumbs img').removeClass('active');
+				$(this).addClass('active');
+				var $src = $(this).attr('src');
+				$('.mfp-img').attr('src', $src);
+			});
+
+
+		}(jQuery));
+	</script>
+	<style type="text/css">
+		.active {
+			border : 4px solid red;
+		}
+
+		.thumbs img {
+			width  : 50px;
+			height : 50px;
+		}
+	</style>
+</head>
+<body>
+<ul>
+	<li>
+		<a class="popup" href="slide1.html">Open popup</a>
+	</li>
+	<li>
+		<a class="popup" href="slide2.html">Open popup</a>
+	</li>
+	<li>
+		<a class="popup" href="slide3.html">Open popup</a>
+	</li>
+	<li>
+		<a class="popup" href="slide4.html">Open popup</a>
+	</li>
+</ul>
+</body>
+</html>
