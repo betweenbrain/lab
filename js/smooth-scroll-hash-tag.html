@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript">(function ($) {
+        $(window).bind('load', function () {
+            var urlHash = window.location.href.split('#')[1];
+            $('html,body').animate({scrollTop:$('.' + urlHash).offset().top - 117}, 750);
+        });
+        $().ready(function () {
+            $('a').click(function () {
+                var linkHash = this.href.split("#")[1];
+                $('html,body').animate({scrollTop:$('.' + linkHash).offset().top - 117}, 750);
+            });
+        });
+    })(jQuery);</script>
+</head>
+<body>
+
+</body>
+</html>
