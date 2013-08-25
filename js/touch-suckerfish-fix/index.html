@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		ul.menu li {
+			display : inline-block;
+		}
+
+		ul.menu ul {
+			position : absolute;
+			left     : -999em;
+			width    : 16em;
+			margin   : 0;
+			padding  : 0;
+		}
+
+		ul.menu ul li {
+			width : 100%;
+		}
+
+		ul.menu li:hover ul ul,
+		ul.menu ul li:hover ul ul,
+		ul.menu ul ul li:hover ul ul {
+			left : -999em;
+		}
+
+		ul.menu li:hover ul,
+		ul.menu ul li:hover ul,
+		ul.menu ul ul li:hover ul,
+		ul.menu ul ul ul li:hover ul {
+			left : auto;
+		}
+	</style>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript">
+		(function ($) {
+			$(function () {
+				$('ul.menu li.parent').on(/*'touchstart'*/ 'click', function () {
+					var $ul   = $(this).find('ul').first(),
+						$open = $(this).find('ul.open');
+					$(this).siblings().find('ul.open').css('left', '-999em').removeClass('open');
+					if ($ul.hasClass('open')) {
+						$open.css('left', '-999em').removeClass('open');
+					} else {
+						$ul.css('left', 'auto').addClass('open');
+					}
+				});
+			});
+		}(jQuery));
+	</script>
+</head>
+<body>
+<nav class="clear clearfix">
+	<ul class="menu">
+		<li class="first active guggenheim-video"><a href="#"><span>Not A Prent</span></a></li>
+		<li class="parent channel"><span class="separator"><span>Parent</span></span>
+			<ul>
+				<li class="first exhibitions"><a href="#"><span>Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+			</ul>
+		</li>
+		<li class="parent channel"><span class="separator"><span>Parent</span></span>
+			<ul>
+				<li class="first exhibitions"><a href="#"><span>Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+			</ul>
+		</li>
+		<li class="parent channel"><span class="separator"><span>Parent</span></span>
+			<ul>
+				<li class="first exhibitions"><a href="#"><span>Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+			</ul>
+		</li>
+		<li class="parent channel"><span class="separator"><span>Parent</span></span>
+			<ul>
+				<li class="first exhibitions"><a href="#"><span>Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+			</ul>
+		</li>
+		<li class="parent channel"><span class="separator"><span>Parent</span></span>
+			<ul>
+				<li class="first exhibitions"><a href="#"><span>Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+			</ul>
+		</li>
+		<li class="parent channel"><span class="separator"><span>Parent</span></span>
+			<ul>
+				<li class="first exhibitions"><a href="#"><span>Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+			</ul>
+		</li>
+	</ul>
+</nav>
+</body>
+</html>
