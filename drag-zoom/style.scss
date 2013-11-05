@@ -1,0 +1,41 @@
+$scale : 1;
+$width: 750px;
+
+.wrap{
+	width: $width;
+	height: $width;
+	overflow: hidden;
+	z-index: 1;
+	margin: 0 auto;
+	border: 1px solid #999;
+}
+
+.zoomed {
+	transform                : scale($scale);
+	-webkit-transform        : scale($scale);
+	-webkit-transform-origin : 0 0;
+	-moz-transform           : scale($scale);
+	-moz-transform-origin    : 0 0;
+	-o-transform             : scale($scale);
+	-o-transform-origin      : 0 0;
+	-ms-transform            : scale($scale);
+	-ms-transform-origin     : 0 0;
+	zoom                     : $scale;
+
+	position                 : relative;
+}
+
+.buddha {
+	position : absolute;
+	left     : 158px;
+	top      : 200px;
+}
+
+.slider-range-min {
+	width: $width;
+}
+
+.slider-range-min{
+	margin: 5px;
+	width: $width - 15px;
+}
