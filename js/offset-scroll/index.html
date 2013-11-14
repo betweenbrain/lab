@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<style type="text/css">
+		body, html {
+			margin  : 0;
+			padding : 0;
+		}
+
+		.block {
+			padding    : 100px;
+			border     : 1px solid #000;
+			margin-top : 1000px;
+		}
+
+		header {
+			display    : block;
+			width      : 100%;
+			height     : 100px;
+			margin     : 0;
+			background : #2C001E;
+			position   : fixed;
+			z-index    : 1;
+			top        : 0;
+			opacity: .5;
+		}
+
+		.menu {
+			position : relative;
+			top      : 100px;
+		}
+	</style>
+	<script type="text/javascript">
+		// From http://www.learningjquery.com/2007/10/improved-animated-scrolling-script-for-same-page-links/
+		$(function() {
+		  $('a[href*=#]:not([href=#])').click(function() {
+		    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+		      var target = $(this.hash);
+		      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+		      if (target.length) {
+		        $('html,body').animate({
+		          scrollTop: target.offset().top - 100
+		        }, 1000);
+		        return false;
+		      }
+		    }
+		  });
+		});
+	</script>
+</head>
+<body>
+<header>
+	Hi Mom!
+</header>
+
+<ul class="top menu">
+	<li><a href="#test1">test1</a></li>
+	<li><a href="#test2">test2</a></li>
+	<li><a href="#test3">test3</a></li>
+</ul>
+
+<div class="block" name="test1" id="test1">This is target div &quot;Test1&quot;, with a vertical offest of 100px.<a href="#top">top</a>
+</div>
+
+<div class="block" name="test2" id="test2">This is target div &quot;Test2&quot;, with a vertical offest of 100px<a href="#top">top</a>
+</div>
+
+<div class="block" name="test3" id="test3">This is target div &quot;Test3&quot;, with a vertical offest of 100px<a href="#top">top</a>
+</div>
+
+</body>
+</html>
