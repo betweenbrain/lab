@@ -1,0 +1,12 @@
+<nav class="clear clearfix">
+				<ul class="menu"><li class="first active guggenheim-video"><a href="/video"><span>Video</span></a></li><li class="parent channel"><span class="separator"><span>Channel</span></span><ul><li class="first exhibitions"><a href="/video/channel/exhibitions"><span>Exhibitions</span></a></li><li class="last events"><a href="/video/channel/events"><span>Events</span></a></li></ul></li><li class="last parent topic"><span class="separator"><span>Topic</span></span><ul><li class="first architecture"><a href="/video/topics/architecture"><span>Architecture</span></a></li><li class="music"><a href="/video/topics/music"><span>Music</span></a></li><li class="dance"><a href="/video/topics/dance"><span>Dance</span></a></li><li class="painting"><a href="/video/topics/painting"><span>Painting</span></a></li><li class="film-a-video"><a href="/video/topics/film-a-video"><span>Film &amp; Video</span></a></li><li class="performance"><a href="/video/topics/performance"><span>Performance</span></a></li><li class="food"><a href="/video/topics/food"><span>Food</span></a></li><li class="photography"><a href="/video/topics/photography"><span>Photography</span></a></li><li class="guggenheim-history"><a href="/video/topics/guggenheim-history"><span>Guggenheim History</span></a></li><li class="sculpture"><a href="/video/topics/sculpture"><span>Sculpture</span></a></li><li class="interview"><a href="/video/topics/interview"><span>Interview</span></a></li><li class="time-lapse"><a href="/video/topics/time-lapse"><span>Time Lapse</span></a></li><li class="installation"><a href="/video/topics/installation"><span>Installation</span></a></li><li class="last work-on-paper"><a href="/video/topics/work-on-paper"><span>Work on Paper</span></a></li></ul></li></ul>
+			</nav>@charset "utf-8";
+
+/**
+ * File       
+ * Created    8/23/13 11:08 AM 
+ * Author     Matt Thomas | matt@betweenbrain.com | http://betweenbrain.com
+ * Support    https://github.com/betweenbrain/
+ * Copyright  Copyright (C) 2013 betweenbrain llc. All Rights Reserved.
+ * License    GNU GPL v3 or later
+ */

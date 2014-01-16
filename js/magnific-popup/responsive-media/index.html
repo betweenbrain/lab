@@ -6,11 +6,10 @@
 	<link rel="stylesheet" href="../magnific-popup.css">
 
 	<!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script type="text/javascript" src="http://admin.brightcove.com/js/BrightcoveExperiences.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
 	<!-- Magnific Popup core JS file -->
-	<script src="//dimsemenov-static.s3.amazonaws.com/dist/jquery.magnific-popup.min.js"></script>
+	<script src="http://dimsemenov-static.s3.amazonaws.com/dist/jquery.magnific-popup.min.js"></script>
 
 	<script>
 		(function ($) {
@@ -27,10 +26,15 @@
 						parseAjax: function (mfpResponse) {
 							var $index = this.index + 1,
 									$total = this.items.length,
-									$width = $(window).width(),
+									$width = $(window).width() * .9 *.5,
+									$mediaWidth = $(window).width() * .9 * .75,
+									$mediaHeight = $(window).height() * .9 * .65,
 									$height = $(window).height();
+									$captionHeight = $(window).height() * .9 * .25;
 							mfpResponse.data = mfpResponse.data.replace('"mfp-counter"><', '"mfp-counter">' + $index + ' of ' + $total + '<');
 							mfpResponse.data = mfpResponse.data.replace('"figure-wrap"', '"figure-wrap" style="height: ' + $height + 'px;"');
+							mfpResponse.data = mfpResponse.data.replace('"caption"', '"caption" style="max-width: ' + $mediaWidth + 'px; "');
+							mfpResponse.data = mfpResponse.data.replace('"media"', '"media" style="width: ' + $mediaWidth + 'px; height: ' + $mediaHeight + 'px"');
 							//console.log('Ajax response', mfpResponse.data);
 						},
 						change   : function () {
@@ -103,6 +107,7 @@
 		}
 
 		.mfp-content {
+			position       : static;
 			display        : inline-block;
 			vertical-align : middle;
 			margin         : 0 auto;
@@ -111,10 +116,7 @@
 			cursor         : auto;
 			max-width      : 902px;
 			overflow       : hidden;
-		}
-
-		.mfp-content .figure-wrap {
-			/*height : 100px;*/
+			max-height     : 100%;
 		}
 
 		.mfp-content img {
@@ -122,13 +124,40 @@
 			max-height   : 75%;
 		}
 
+		/*
+		iframe,
+		object {
+			position   : absolute;
+			display    : block;
+			top        : 10%;
+			left       : 11.3%;
+			width      : 77.6%;
+			height     : 80%;
+			box-shadow : 0 0 8px rgba(0, 0, 0, .6);
+			background : #000;
+		}
+		*/
+
+		iframe,
+		object {
+			display    : block;
+			width      : 100%;
+			height: 100%;
+			box-shadow : 0 0 8px rgba(0, 0, 0, .6);
+			background : #000;
+		}
+
+		.caption {
+			position : absolute;
+			display  : block;
+			bottom   : 0%;
+			left     : 11.3%;
+			width    : 77.6%;
+		}
 	</style>
 </head>
 <body>
 <ul>
-	<li>
-		<a class="popup" href="brightcove.html">Brightcove</a>
-	</li>
 	<li>
 		<a class="popup" href="slide1.html">Open popup</a>
 	</li>
@@ -142,5 +171,21 @@
 		<a class="popup" href="slide4.html">Open popup</a>
 	</li>
 </ul>
+<script type="text/javascript">
+
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-2493745-1']);
+	_gaq.push(['_trackPageview']);
+
+	(function () {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();
+
+</script>
 </body>
 </html>

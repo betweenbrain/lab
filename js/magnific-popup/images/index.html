@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!-- Magnific Popup core CSS file -->
+	<link rel="stylesheet" href="../magnific-popup.css">
+
+	<!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+	<!-- Magnific Popup core JS file -->
+	<script src="../jquery.magnific-popup.min.js"></script>
+	<script>
+		(function ($) {
+			$().ready(function () {
+
+				var $height = $(window).height() * .75;
+
+				$('.popup').magnificPopup({
+					type     : 'image',
+					gallery  : {
+						enabled: true
+					},
+					image    : {
+						markup: '<article class="artists-bio media ">' +
+								'<header>' +
+								'<h1 class="contentheading">{$title}</h1>' +
+								'</header>' +
+								'<figure class="mfp-figure full" style="max-height:' + $height + 'px;" >' +
+								'<div class="mfp-img"></div>' +
+								'<figcaption class="fullcaption">' +
+								'<a href="#" class="caption-toggle">Caption</a>' +
+								'<div class="mfp-title"></div>' +
+								'</figcaption>' +
+								'</figure>' +
+								'<div class="mfp-counter"></div>' +
+								'<div class="mfp-close"></div>' +
+								'</article>',
+
+						verticalFit: false
+					}
+				});
+			});
+		}(jQuery));
+	</script>
+	<style>
+		.mfp-img {
+			max-height: 100%;
+		}
+	</style>
+
+</head>
+<body>
+<a class="popup" href="../../../images/wood/Wood.jpg">
+	<img src="../../../images/wood/Wood.jpg" width="50" />
+</a>
+
+</body>
+</html>

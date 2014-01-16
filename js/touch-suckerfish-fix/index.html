@@ -36,7 +36,11 @@
 	<script type="text/javascript">
 		(function ($) {
 			$(function () {
-				$('ul.menu li.parent').on(/*'touchstart'*/ 'click', function () {
+				$('ul.menu li.parent').on(/*'touchstart'*/ 'click', function (e) {
+					console.log(e);
+					$("ul.menu li.parent li").click(function(e) {
+					        e.stopPropagation();
+					 });
 					var $ul   = $(this).find('ul').first(),
 						$open = $(this).find('ul.open');
 					$(this).siblings().find('ul.open').css('left', '-999em').removeClass('open');
@@ -53,71 +57,71 @@
 <body>
 <nav class="clear clearfix">
 	<ul class="menu">
-		<li class="first active guggenheim-video"><a href="#"><span>Not A Prent</span></a></li>
+		<li class="first active guggenheim-video"><a href="//betweenbrain.com"><span>Not A Prent</span></a></li>
 		<li class="parent channel"><span class="separator"><span>Parent</span></span>
 			<ul>
-				<li class="first exhibitions"><a href="#"><span>Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="first exhibitions"><a href="//betweenbrain.com"><span>Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
 			</ul>
 		</li>
 		<li class="parent channel"><span class="separator"><span>Parent</span></span>
 			<ul>
-				<li class="first exhibitions"><a href="#"><span>Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="first exhibitions"><a href="//betweenbrain.com"><span>Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
 			</ul>
 		</li>
 		<li class="parent channel"><span class="separator"><span>Parent</span></span>
 			<ul>
-				<li class="first exhibitions"><a href="#"><span>Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="first exhibitions"><a href="//betweenbrain.com"><span>Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
 			</ul>
 		</li>
 		<li class="parent channel"><span class="separator"><span>Parent</span></span>
 			<ul>
-				<li class="first exhibitions"><a href="#"><span>Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="first exhibitions"><a href="//betweenbrain.com"><span>Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
 			</ul>
 		</li>
 		<li class="parent channel"><span class="separator"><span>Parent</span></span>
 			<ul>
-				<li class="first exhibitions"><a href="#"><span>Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="first exhibitions"><a href="//betweenbrain.com"><span>Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
 			</ul>
 		</li>
 		<li class="parent channel"><span class="separator"><span>Parent</span></span>
 			<ul>
-				<li class="first exhibitions"><a href="#"><span>Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
-				<li class="last events"><a href="#"><span>Another Child</span></a></li>
+				<li class="first exhibitions"><a href="//betweenbrain.com"><span>Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
+				<li class="last events"><a href="//betweenbrain.com"><span>Another Child</span></a></li>
 			</ul>
 		</li>
 	</ul>

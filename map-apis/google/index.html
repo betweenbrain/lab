@@ -19,28 +19,41 @@
 				zoom  : 16,
 				center: new google.maps.LatLng(40.782873, -73.959588)
 			};
+
 			map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
+			var image = 'arrow.png';
+			var myLatLng = new google.maps.LatLng(40.782873, -73.959588);
+			var beachMarker = new google.maps.Marker({
+				position : myLatLng,
+				map      : map,
+				icon     : image,
+				draggable: true,
+				title    : "Drag me!"
+			});
+
 			var styles = [
-			  {
-			    stylers: [
-			      { hue: "#8a2b87" },
-			      { saturation: -20 }
-			    ]
-			  },{
-			    featureType: "road",
-			    elementType: "geometry",
-			    stylers: [
-			      { lightness: 100 },
-			      { visibility: "simplified" }
-			    ]
-			  },{
-			    featureType: "road",
-			    elementType: "labels",
-			    stylers: [
-			      { visibility: "on" }
-			    ]
-			  }
+				{
+					stylers: [
+						{ hue: "#8a2b87" },
+						{ saturation: -20 }
+					]
+				},
+				{
+					featureType: "road",
+					elementType: "geometry",
+					stylers    : [
+						{ lightness: 100 },
+						{ visibility: "simplified" }
+					]
+				},
+				{
+					featureType: "road",
+					elementType: "labels",
+					stylers    : [
+						{ visibility: "on" }
+					]
+				}
 			];
 
 			map.setOptions({styles: styles});

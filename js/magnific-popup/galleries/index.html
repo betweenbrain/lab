@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!-- Magnific Popup core CSS file -->
+	<link rel="stylesheet" href="../magnific-popup.css">
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<!--
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	-->
+	<script src="//dimsemenov-static.s3.amazonaws.com/dist/jquery.magnific-popup.min.js"></script>
+
+	<script>
+		(function ($) {
+			$().ready(function () {
+				$('.popup').magnificPopup({
+					type          : 'ajax',
+					cursor        : 'mfp-ajax-cur',
+					closeOnBgClick: false,
+					midClick      : true,
+					gallery       : {
+						enabled: true
+					},
+					image         : {
+						markup: '<figure class="full">' +
+								'<script>' +
+								'(function ($) {' +
+								'   $().ready(function () {' +
+								'       $(".fullcaption, .caption-close").hide();' +
+								'	});' +
+								'}(jQuery));' +
+								'$(".caption-toggle").click(function(){' +
+								'   $(this).hide();' +
+								'   $(".fullcaption, .caption-close").show();' +
+								'   return false;' +
+								'});' +
+								'$(".caption-close").click(function () {' +
+								'   $(".fullcaption, .caption-close").hide();' +
+								'   $(".caption-toggle").show();' +
+								'   return false;' +
+								'});' +
+								'<\/script>' +
+								'<div class="mfp-close"></div>' +
+								'<div class="mfp-counter"></div>' +
+								'<div class="mfp-img full-image"></div>' +
+								'<a href="#" class="caption-toggle">Full caption</a>' +
+								'<figcaption class="fullcaption">' +
+								'<a title="Close caption" class="caption-close">x</a>' +
+								'<div class="mfp-title bob"></div>' +
+								'</figure>'
+					}
+				});
+			});
+		}(jQuery));
+	</script>
+
+	<script>
+		(function ($) {
+			$().ready(function () {
+				$(".fullcaption, .caption-close").hide();
+			});
+		}(jQuery));
+		$(".caption-toggle").click(function () {
+			$(this).hide();
+			$(".fullcaption, .caption-close").show();
+			return false;
+		});
+		$(".caption-close").click(function () {
+			$(".fullcaption, .caption-close").hide();
+			$(".caption-toggle").show();
+			return false;
+		});
+	</script>
+
+	<style type="text/css">
+		.active {
+			border : 4px solid red;
+		}
+
+		.thumbs img {
+			width  : 50px;
+			height : 50px;
+		}
+
+		.mfp-wrap {
+			top                         : 5%;
+			left                        : 5%;
+			width                       : 90%;
+			height                      : 90%;
+			z-index                     : 1143;
+			position                    : fixed;
+			outline                     : none !important;
+			-webkit-backface-visibility : hidden;
+		}
+
+		.mfp-container {
+			background : white;
+			text-align : center;
+			position   : absolute;
+			width      : 100%;
+			height     : 100%;
+			left       : 0;
+			top        : 0;
+			padding    : 20px;
+		}
+
+		.mfp-content {
+			position       : static;
+			display        : inline-block;
+			vertical-align : middle;
+			margin         : 0 auto;
+			text-align     : left;
+			z-index        : 1145;
+			cursor         : auto;
+			max-width      : 902px;
+			overflow       : hidden;
+			max-height     : 100%;
+		}
+
+		.mfp-title {
+			color : #444;
+		}
+
+		.mfp-content img {
+			border-right : 4px solid transparent;
+			max-height   : 75%;
+		}
+
+		iframe,
+		object {
+			position   : absolute;
+			display    : block;
+			top        : 10%;
+			left       : 11.3%;
+			width      : 77.6%;
+			height     : 80%;
+			box-shadow : 0 0 8px rgba(0, 0, 0, .6);
+			background : #000;
+		}
+
+		.caption {
+			position : absolute;
+			display  : block;
+			bottom   : 0%;
+			left     : 11.3%;
+			width    : 77.6%;
+		}
+	</style>
+</head>
+<body>
+<ul>
+	<li>
+		<a class="popup mfp-image" href="buddha1.jpg" title="An image caption">Open popup</a>
+	</li>
+	<li>
+		<a class="popup mfp-image" href="buddha2.jpg" title="Another image caption">Open popup</a>
+	</li>
+	<li>
+		<a class="popup mfp-image" href="buddha3.jpg" title="Yet another image caption">Open popup</a>
+	</li>
+	<li>
+		<a class="popup mfp-image" href="buddha4.jpg" title="And, yet another image caption">Open popup</a>
+	</li>
+</ul>
+<script type="text/javascript">
+
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-2493745-1']);
+	_gaq.push(['_trackPageview']);
+
+	(function () {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();
+
+</script>
+</body>
+</html>
