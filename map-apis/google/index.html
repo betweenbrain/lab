@@ -22,14 +22,27 @@
 
 			map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
+			var contentString = '<div id="content">' +
+					'<h1>Guggenheim Museum</h1>' +
+					'<img src="http://media.guggenheim.org/content/New_York/about_us/au_home_690h.jpg" alt="The Solomon R. Guggenheim Museum" title="View of Solomon R. Guggenheim Museum exterior">' +
+					'<div id="bodyContent">' +
+					'<p>An internationally renowned art museum and one of the most significant architectural icons of the 20th century, the Guggenheim Museum is at once a vital cultural center, an educational institution, and the heart of an international network of museums. Visitors can experience special exhibitions of modern and contemporary art, lectures by artists and critics, performances and film screenings, classes for teens and adults, and daily tours of the galleries led by museum educators. Founded on a collection of early modern masterpieces, the Guggenheim Museum today is an ever-growing institution devoted to the art of the 20th century and beyond.</p>' +
+					'</div>' +
+					'</div>';
+
+			var infowindow = new google.maps.InfoWindow({
+				content: contentString,
+				class: 'info'
+			});
+
 			var image = 'arrow.png';
 			var myLatLng = new google.maps.LatLng(40.782873, -73.959588);
-			var beachMarker = new google.maps.Marker({
+			var marker = new google.maps.Marker({
 				position : myLatLng,
 				map      : map,
 				icon     : image,
 				draggable: true,
-				title    : "Drag me!"
+				title    : "Drag me! Click Me!"
 			});
 
 			var styles = [
@@ -57,9 +70,17 @@
 			];
 
 			map.setOptions({styles: styles});
+
+			google.maps.event.addListener(marker, 'click', function () {
+				infowindow.open(map, marker);
+			});
 		}
 
 		google.maps.event.addDomListener(window, 'load', initialize);
+
+		google.maps.event.addListener(marker, 'click', function () {
+			infowindow.open(map, marker);
+		});
 
 	</script>
 </head>
