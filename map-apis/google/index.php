@@ -3,7 +3,7 @@
 $ch = curl_init();
 
 // set url
-curl_setopt($ch, CURLOPT_URL, "http://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($_GET['address'])."+06791&sensor=true");
+curl_setopt($ch, CURLOPT_URL, "http://maps.googleapis.com/maps/api/geocode/json?address=" . urlencode($_GET['address']) . "+06791&sensor=true");
 
 //return the transfer as a string
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -29,9 +29,10 @@ $lng = $output->results[0]->geometry->location->lng;
 			margin  : 0px;
 			padding : 0px;
 		}
+
 		form {
-			position: absolute;
-			z-index: 1;
+			position : absolute;
+			z-index  : 1;
 		}
 	</style>
 	<script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script>
@@ -40,7 +41,7 @@ $lng = $output->results[0]->geometry->location->lng;
 		function initialize() {
 			var mapOptions = {
 				zoom  : 16,
-				center: new google.maps.LatLng(<?php echo $lat ?>,<?php echo $lng ?>)
+				center: new google.maps.LatLng(<?php echo $lat ?>, <?php echo $lng ?>)
 			};
 
 			map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
