@@ -33,6 +33,11 @@ $lng = $output->results[0]->geometry->location->lng;
 		form {
 			position : absolute;
 			z-index  : 1;
+			background: #fff;
+			border: 2px solid #000;
+			margin   : 2em;
+			padding  : 1em;
+			left     : 33%;
 		}
 	</style>
 	<script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script>
