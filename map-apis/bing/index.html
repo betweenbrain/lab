@@ -16,6 +16,25 @@
 			}
 
 			var map = new Microsoft.Maps.Map(document.getElementById("mapDiv"), mapOptions);
+			// Retrieve the location of the map center
+			var center = map.getCenter();
+
+			// Add a pin to the center of the map
+			var pin = new Microsoft.Maps.Pushpin(center, {draggable: true});
+
+			// Add a handler to the pushpin drag
+			Microsoft.Maps.Events.addHandler(pin, 'mouseup', DisplayLoc);
+
+			map.entities.push(pin);
+		}
+
+		function DisplayLoc(e) {
+			if (e.targetType == 'pushpin') {
+
+				var pinLoc = e.target.getLocation();
+				alert("The location of the pushpin is now " + pinLoc.latitude + ", " + pinLoc.longitude);
+
+			}
 		}
 	</script>
 </head>
