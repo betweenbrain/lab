@@ -22,7 +22,7 @@ $google = new gooogleOauth($client_id, $client_secret, $api_key, $redirect_uri);
 // Required. A space-delimited list of scopes that identify the resources that your application could access on the user's behalf.
 $scope = 'https://www.googleapis.com/auth/yt-analytics.readonly';
 
-if (!file_exists($google->authToken))
+if (!file_exists($google->refreshToken))
 {
 
 	$parameters = array(
@@ -35,7 +35,7 @@ if (!file_exists($google->authToken))
 
 	echo $google->renderAuthLink($parameters);
 
-	$google->cacheAuthToken();
+	$google->fetchTokens();
 }
 else
 {
@@ -66,8 +66,8 @@ class gooogleOauth
 	public $client_secret = null;
 	public $api_key = null;
 	public $redirect_uri = null;
-	public $authToken = 'auth.token';
-	public $bearerToken = 'bearer.token';
+	public $refreshToken = 'refresh.token';
+	public $accessToken = 'access.token';
 
 	public function __construct($client_id, $client_secret, $api_key, $redirect_uri)
 	{
@@ -77,46 +77,8 @@ class gooogleOauth
 		$this->redirect_uri  = $redirect_uri;
 	}
 
-	public function cacheAuthToken()
+	public function fetchTokens()
 	{
-		if (isset($_GET['code']))
-		{
-			file_put_contents($this->authToken, $_GET['code']);
-		}
-	}
-
-	public function renderAuthLink($parameters)
-	{
-		$url   = 'https://accounts.google.com/o/oauth2/auth?';
-		$query = http_build_query($parameters);
-
-		return '<a href="' . $url . $query . '">Get Authorization Code</a><br/><br/><br/>';
-	}
-
-	public function validateBearerToken()
-	{
-		if (file_exists($this->bearerToken))
-		{
-			$fileAge = filemtime($this->bearerToken);
-			$now     = time();
-
-			if ($now - $fileAge < 3600)
-			{
-				$_SESSION['access_token'] = file_get_contents($this->bearerToken);
-
-				return true;
-			}
-
-			unlink($this->bearerToken);
-		}
-
-		$this->fetchBearerToken();
-		$this->validateBearerToken();
-	}
-
-	public function fetchBearerToken()
-	{
-
 		if (isset($_GET['code']))
 		{
 
@@ -145,6 +107,75 @@ class gooogleOauth
 
 			//execute post
 			$response = curl_exec($curl);
+			$response = json_decode($response);
+
+			//close connection
+			curl_close($curl);
+
+			file_put_contents($this->accessToken, $response->access_token);
+			file_put_contents($this->refreshToken, $response->refresh_token);
+		}
+	}
+
+	public function renderAuthLink($parameters)
+	{
+		$url   = 'https://accounts.google.com/o/oauth2/auth?';
+		$query = http_build_query($parameters);
+
+		return '<a href="' . $url . $query . '">Get Authorization Code</a><br/><br/><br/>';
+	}
+
+	public function validateBearerToken()
+	{
+		if (file_exists($this->accessToken))
+		{
+			$fileAge = filemtime($this->accessToken);
+			$now     = time();
+
+			if ($now - $fileAge < 3600)
+			{
+				$_SESSION['access_token'] = file_get_contents($this->accessToken);
+
+				return true;
+			}
+
+			unlink($this->accessToken);
+		}
+
+		$this->fetchBearerToken();
+
+	}
+
+	public function fetchBearerToken()
+	{
+
+		if (file_exists($this->refreshToken))
+		{
+
+			$url = 'https://accounts.google.com/o/oauth2/token';
+
+			$parameters = array(
+				'refresh_token' => file_get_contents($this->refreshToken),
+				'client_id'     => $this->client_id,
+				'client_secret' => $this->client_secret,
+				'grant_type'    => 'refresh_token'
+			);
+
+			$query = http_build_query($parameters);
+
+			//open connection
+			$curl = curl_init();
+
+			// Make a POST request to get bearer token
+			curl_setopt_array($curl, Array(
+				CURLOPT_URL            => $url,
+				CURLOPT_POST           => true,
+				CURLOPT_POSTFIELDS     => $query,
+				CURLOPT_RETURNTRANSFER => 1
+			));
+
+			//execute post
+			$response = curl_exec($curl);
 
 			//close connection
 			curl_close($curl);
@@ -152,7 +183,7 @@ class gooogleOauth
 			$response                 = json_decode($response, true);
 			$_SESSION['access_token'] = $response['access_token'];
 
-			file_put_contents($this->bearerToken, $response['access_token']);
+			file_put_contents($this->accessToken, $response['access_token']);
 
 			header('Location: ' . filter_var($this->redirect_uri, FILTER_SANITIZE_URL));
 		}
@@ -177,13 +208,5 @@ class gooogleOauth
 
 			echo '<pre>Views: ' . print_r($response->rows[0][0], true) . '</pre>';
 		}
-
 	}
 }
-
-/**
- * Forming the URL: The URL used when authenticating a user
- * https://developers.google.com/accounts/docs/OAuth2WebServer#formingtheurl
- */
-
-
