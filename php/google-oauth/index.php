@@ -132,18 +132,15 @@ class gooogleOauth
 			$fileAge = filemtime($this->accessToken);
 			$now     = time();
 
-			if ($now - $fileAge < 3600)
+			if ($now - $fileAge > 3600)
 			{
-				$_SESSION['access_token'] = file_get_contents($this->accessToken);
-
-				return true;
+				unlink($this->accessToken);
+				$this->fetchBearerToken();
 			}
 
-			unlink($this->accessToken);
+			return;
 		}
-
 		$this->fetchBearerToken();
-
 	}
 
 	public function fetchBearerToken()
@@ -180,8 +177,7 @@ class gooogleOauth
 			//close connection
 			curl_close($curl);
 
-			$response                 = json_decode($response, true);
-			$_SESSION['access_token'] = $response['access_token'];
+			$response = json_decode($response, true);
 
 			file_put_contents($this->accessToken, $response['access_token']);
 
@@ -191,14 +187,14 @@ class gooogleOauth
 
 	public function fetchYoutubeReport($parameters)
 	{
-		if (isset($_SESSION['access_token']) && $_SESSION['access_token'])
+		if (file_exists($this->accessToken))
 		{
 			$url   = 'https://www.googleapis.com/youtube/analytics/v1/reports?';
 			$query = http_build_query($parameters);
 			$curl  = curl_init();
 
 			curl_setopt_array($curl, Array(
-				CURLOPT_HTTPHEADER     => array('Authorization:  Bearer ' . $_SESSION['access_token']),
+				CURLOPT_HTTPHEADER     => array('Authorization:  Bearer ' . file_get_contents($this->accessToken)),
 				CURLOPT_URL            => $url . $query,
 				CURLOPT_RETURNTRANSFER => 1
 			));
