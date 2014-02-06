@@ -135,15 +135,15 @@ class gooogleOauth
 			if ($now - $fileAge > 3600)
 			{
 				unlink($this->accessToken);
-				$this->fetchBearerToken();
+				$this->fetchAccessToken();
 			}
 
 			return;
 		}
-		$this->fetchBearerToken();
+		$this->fetchAccessToken();
 	}
 
-	public function fetchBearerToken()
+	public function fetchAccessToken()
 	{
 
 		if (file_exists($this->refreshToken))
