@@ -111,7 +111,8 @@ $entities = array(
 	'&#61785;',
 	'&#61792;',
 	'&#61793;',
-	'&#61794;'
+	'&#61794;',
+	'&#61795;'
 ); ?>
 <!DOCTYPE html>
 <html>
@@ -145,7 +146,7 @@ $entities = array(
 		}
 
 		@font-face {
-			font-family : 'goandcoregular';
+			font-family : 'tkregular';
 			src         : url('fonts/tk-regular-webfont.eot');
 			src         : url('fonts/tk-regular-webfont.eot?#iefix') format('embedded-opentype'),
 			url('fonts/tk-regular-webfont.woff') format('woff'),
@@ -153,7 +154,7 @@ $entities = array(
 			url('fonts/tk-regular-webfont.svg#webfont') format('svg');
 		}
 
-		a.goco {
+		a.tkreg {
 			text-decoration : none;
 		}
 
@@ -164,12 +165,12 @@ $entities = array(
 		}
 
 		/* Required Styles */
-		.goco {
+		.tkreg {
 			position : relative;
 		}
 
-		.goco:before {
-			font-family     : goandcoregular;
+		.tkreg:before {
+			font-family     : tkregular;
 			font-style      : normal;
 			font-weight     : normal;
 			text-decoration : inherit;
@@ -183,7 +184,7 @@ $entities = array(
 
 		<?php foreach ($entities as $entity) :
 		 $hex = entityToHex($entity); ?>
-		.goco-<?php echo $hex ?>:before {
+		.tkreg-<?php echo $hex ?>:before {
 			content : '\<?php echo $hex ?>';
 		}
 
@@ -193,7 +194,7 @@ $entities = array(
 <body>
 <pre>
 	@font-face {
-		font-family : 'goandcoregular';
+		font-family : 'tkregular';
 		src         : url('fonts/tk-regular-webfont.eot');
 		src         : url('fonts/tk-regular-webfont.eot?#iefix') format('embedded-opentype'),
 		url('fonts/tk-regular-webfont.woff') format('woff'),
@@ -201,12 +202,12 @@ $entities = array(
 		url('fonts/tk-regular-webfont.svg#webfont') format('svg');
 	}
 
-	.goco {
+	.tkreg {
 		position   : relative;
 	}
 
-	.goco:before {
-		font-family     : goandcoregular;
+	.tkreg:before {
+		font-family     : tkregular;
 		font-style      : normal;
 		font-weight     : normal;
 		text-decoration : inherit;
@@ -245,13 +246,13 @@ $entities = array(
 			</td>
 			<td>
 				<code>
-					.goco-<?php echo $hex ?>:before {
+					.tkreg-<?php echo $hex ?>:before {
 					content : '\<?php echo $hex ?>';<br />
 					}
 				</code>
 			</td>
 			<td class="center">
-				<a class="goco goco-<?php echo $hex ?>" title="Some Title">
+				<a class="tkreg tkreg-<?php echo $hex ?>" title="Some Title">
 					<p class="hide-text">Some long passage of text replaced with a glyph.</p></a>
 			</td>
 		</tr>
