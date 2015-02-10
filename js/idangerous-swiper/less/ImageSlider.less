@@ -1,0 +1,103 @@
+/*
+ * DO NOT MODIFY THIS FILE:  Instead, @import this LESS file
+ * into an existing LESS stylesheet or into a new one, and
+ * then something like:
+ *
+ *     #simpleImageSlider {
+ *        .slideshow {
+ *            .ImageSlider(870px, 430px);
+ *        }
+ *     }
+ */
+
+@defaultSlideWidth: 870px;
+@defaultSlideHeight: 650px;
+@defaultThumbsBackground: rgba(255,255,255,0.5);
+@defaultThumbsPadding: 4px;
+@defaultThumbsWidth: 90px;
+@defaultThumbsHeight: 70px;
+@defaultSmallThumbsZoom: 0.5;
+
+// Generic styles:
+
+.ImageSliderSize(@slideWidth, @slideHeight) {
+    width:@slideWidth;
+    height:@slideHeight;
+    .slider {
+        .slide, img {
+            width:@slideWidth;
+            height:@slideHeight;
+        }
+    }
+}
+
+.ImageSlider(@slideWidth, @slideHeight,
+             @thumbsBackground:@defaultThumbsBackground,
+             @thumbsPadding:@defaultThumbsPadding,
+             @thumbsWidth:@defaultThumbsWidth,
+             @thumbsHeight:@defaultThumbsHeight,
+             @smallThumbsZoom:@defaultSmallThumbsZoom) {
+
+    position:relative;
+    top:0;
+    left:0;
+    width:@slideWidth;
+    height:@slideHeight;
+    overflow:hidden;
+
+    .slider {
+        width:100%;
+        height:100%;
+
+        .slide {
+            display:block;
+            position:absolute;
+            float:left;
+            &> * {
+                position:absolute;
+            }
+        }
+
+        .slide, img {
+            width:@slideWidth;
+            height:@slideHeight;
+        }
+    }
+
+    .thumbs {
+        position:absolute;
+        bottom:0;
+        left:0;
+        right:0;
+        text-align:center;
+        background:@thumbsBackground;
+        overflow:hidden;
+        &.largeThumbs {
+            height:(@thumbsHeight + @thumbsPadding*4);
+            .thumb {
+                width:@thumbsWidth;
+                height:@thumbsHeight;
+            }
+        }
+
+        &.smallThumbs {
+            height:(@thumbsHeight + @thumbsPadding*4) * @smallThumbsZoom;
+            .thumb {
+                //        zoom:@smallThumbsZoom; // Unreliable layout in IE.
+                width:@thumbsWidth * @smallThumbsZoom;
+                height:@thumbsHeight * @smallThumbsZoom;
+            }
+        }
+
+        &.noThumbs {
+            display:none;
+        }
+    }
+
+    .thumb {
+        margin:@thumbsPadding;
+        box-shadow:0 1px 5px rgba(0,0,0,0.25);
+        display:inline-block;
+        cursor:pointer;
+    }
+}

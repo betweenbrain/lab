@@ -1,0 +1,38 @@
+.wrapper {
+  margin: 0 auto;
+  overflow: hidden;
+}
+.wrapper .slider {
+  overflow: hidden;
+  width: 20000px;
+}
+.wrapper .slide {
+  background: #efefef;
+  float: left;
+}
+.wrapper .slide:hover {
+  background: #555555;
+}
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+.wrapper {
+  width: 300px;
+}
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .wrapper {
+    width: 600px;
+  }
+}
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .wrapper {
+    width: 900px;
+  }
+}
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .wrapper {
+    width: 1200px;
+  }
+}
